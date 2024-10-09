@@ -13,7 +13,7 @@ public class EstadisticaEquiposController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<EstadisticaEquipos>>> GetEstadisticaEquipos()
     {
-        return await _context.EstadisticaEquipos.ToListAsync();
+        return Ok(await _context.EstadisticaEquipos.ToListAsync());
     }
 
     // GET: api/EstadisticaEquipos/5
@@ -27,7 +27,7 @@ public class EstadisticaEquiposController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return estadisticaEquipos;
+        return Ok(estadisticaEquipos);
     }
 
     // PUT: api/EstadisticaEquipos/5
@@ -57,7 +57,7 @@ public class EstadisticaEquiposController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // POST: api/EstadisticaEquipos
@@ -67,7 +67,7 @@ public class EstadisticaEquiposController(Contexto _context) : ControllerBase
         _context.EstadisticaEquipos.Add(estadisticaEquipos);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetEstadisticaEquipos", new { id = estadisticaEquipos.EstadisticaEquipoId }, estadisticaEquipos);
+        return Ok(CreatedAtAction("GetEstadisticaEquipos", new { id = estadisticaEquipos.EstadisticaEquipoId }, estadisticaEquipos));
     }
 
     // DELETE: api/EstadisticaEquipos/5
@@ -83,7 +83,7 @@ public class EstadisticaEquiposController(Contexto _context) : ControllerBase
         _context.EstadisticaEquipos.Remove(estadisticaEquipos);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool EstadisticaEquiposExists(int id)

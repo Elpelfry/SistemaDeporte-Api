@@ -13,7 +13,7 @@ public class EquiposController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Equipos>>> GetEquipos()
     {
-        return await _context.Equipos.ToListAsync();
+        return Ok(await _context.Equipos.ToListAsync());
     }
 
     // GET: api/Equipos/5
@@ -27,7 +27,7 @@ public class EquiposController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return equipos;
+        return Ok(equipos);
     }
 
     // PUT: api/Equipos/5
@@ -57,7 +57,7 @@ public class EquiposController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // POST: api/Equipos
@@ -67,7 +67,7 @@ public class EquiposController(Contexto _context) : ControllerBase
         _context.Equipos.Add(equipos);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetEquipos", new { id = equipos.EquipoId }, equipos);
+        return Ok(CreatedAtAction("GetEquipos", new { id = equipos.EquipoId }, equipos));
     }
 
     // DELETE: api/Equipos/5
@@ -83,7 +83,7 @@ public class EquiposController(Contexto _context) : ControllerBase
         _context.Equipos.Remove(equipos);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool EquiposExists(int id)

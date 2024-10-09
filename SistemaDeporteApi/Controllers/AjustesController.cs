@@ -14,7 +14,7 @@ public class AjustesController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Ajustes>>> GetAjustes()
     {
-        return await _context.Ajustes.ToListAsync();
+        return Ok(await _context.Ajustes.ToListAsync());
     }
 
     // GET: api/Ajustes/5
@@ -28,7 +28,7 @@ public class AjustesController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return ajustes;
+        return Ok(ajustes);
     }
 
     // PUT: api/Ajustes/5
@@ -58,7 +58,7 @@ public class AjustesController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // POST: api/Ajustes
@@ -68,7 +68,7 @@ public class AjustesController(Contexto _context) : ControllerBase
         _context.Ajustes.Add(ajustes);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetAjustes", new { id = ajustes.AjusteId }, ajustes);
+        return Ok(CreatedAtAction("GetAjustes", new { id = ajustes.AjusteId }, ajustes));
     }
 
     // DELETE: api/Ajustes/5
@@ -84,7 +84,7 @@ public class AjustesController(Contexto _context) : ControllerBase
         _context.Ajustes.Remove(ajustes);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool AjustesExists(int id)

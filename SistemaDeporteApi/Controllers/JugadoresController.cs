@@ -13,7 +13,7 @@ public class JugadoresController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Jugadores>>> GetJugadores()
     {
-        return await _context.Jugadores.ToListAsync();
+        return Ok(await _context.Jugadores.ToListAsync());
     }
 
     // GET: api/Jugadores/5
@@ -27,7 +27,7 @@ public class JugadoresController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return jugadores;
+        return Ok(jugadores);
     }
 
     // PUT: api/Jugadores/5
@@ -57,7 +57,7 @@ public class JugadoresController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // POST: api/Jugadores
@@ -67,7 +67,7 @@ public class JugadoresController(Contexto _context) : ControllerBase
         _context.Jugadores.Add(jugadores);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetJugadores", new { id = jugadores.JugadorId }, jugadores);
+        return Ok(CreatedAtAction("GetJugadores", new { id = jugadores.JugadorId }, jugadores));
     }
 
     // DELETE: api/Jugadores/5
@@ -83,7 +83,7 @@ public class JugadoresController(Contexto _context) : ControllerBase
         _context.Jugadores.Remove(jugadores);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool JugadoresExists(int id)

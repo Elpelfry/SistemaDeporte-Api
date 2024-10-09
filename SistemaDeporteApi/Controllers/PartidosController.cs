@@ -13,7 +13,7 @@ public class PartidosController(Contexto _context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Partidos>>> GetPartidos()
     {
-        return await _context.Partidos.ToListAsync();
+        return Ok(await _context.Partidos.ToListAsync());
     }
 
     // GET: api/Partidos/5
@@ -27,7 +27,7 @@ public class PartidosController(Contexto _context) : ControllerBase
             return NotFound();
         }
 
-        return partidos;
+        return Ok(partidos);
     }
 
     // PUT: api/Partidos/5
@@ -57,7 +57,7 @@ public class PartidosController(Contexto _context) : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     // POST: api/Partidos
@@ -67,7 +67,7 @@ public class PartidosController(Contexto _context) : ControllerBase
         _context.Partidos.Add(partidos);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetPartidos", new { id = partidos.PartidoId }, partidos);
+        return Ok(CreatedAtAction("GetPartidos", new { id = partidos.PartidoId }, partidos));
     }
 
     // DELETE: api/Partidos/5
@@ -83,7 +83,7 @@ public class PartidosController(Contexto _context) : ControllerBase
         _context.Partidos.Remove(partidos);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(NoContent());
     }
 
     private bool PartidosExists(int id)
