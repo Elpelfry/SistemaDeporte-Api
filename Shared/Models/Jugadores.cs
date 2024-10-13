@@ -9,6 +9,6 @@ public class Jugadores
     public int EquipoId { get; set; }
     public string? Nombre { get; set; }
     public string? Apellido { get; set; }
-    public char Sexo { get; set; }
+    public string? Sexo { get; set; }
     public string? Nacionalidad { get; set; }
 }
