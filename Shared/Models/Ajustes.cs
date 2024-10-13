@@ -10,4 +10,5 @@ public class Ajustes
     public float PorcentajeBueno { get; set; }
     public float PorcentajeMuyBueno { get; set; }
     public float PorcentajeExcelente { get; set; }
+    public string? PartidoActual { get; set; }
 }
