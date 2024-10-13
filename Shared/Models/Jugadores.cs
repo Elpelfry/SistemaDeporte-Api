@@ -10,4 +10,5 @@ public class Jugadores
     public string? Nombre { get; set; }
     public string? Apellido { get; set; }
     public char Sexo { get; set; }
+    public string? Nacionalidad { get; set; }
 }
