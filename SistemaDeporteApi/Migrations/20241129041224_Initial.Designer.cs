@@ -11,8 +11,8 @@ using SistemaDeporteApi.DAL;
 namespace SistemaDeporteApi.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20241013021813_ajustes-partidoactual")]
-    partial class ajustespartidoactual
+    [Migration("20241129041224_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,8 +63,14 @@ namespace SistemaDeporteApi.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Pais")
+                        .HasColumnType("longtext");
+
                     b.Property<int>("PartidoId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("longtext");
 
                     b.HasKey("EquipoId");
 
@@ -180,12 +186,14 @@ namespace SistemaDeporteApi.Migrations
                     b.Property<int>("EquipoId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Nacionalidad")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Sexo")
-                        .IsRequired()
-                        .HasColumnType("varchar(1)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("JugadorId");
 
@@ -201,6 +209,9 @@ namespace SistemaDeporteApi.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("PartidoId"));
 
                     b.Property<string>("Descripcion")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Titulo")
                         .HasColumnType("longtext");
 
                     b.HasKey("PartidoId");

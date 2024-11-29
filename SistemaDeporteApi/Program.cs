@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Configuration.AddEnvironmentVariables();
 
-var ConStr = builder.Configuration.GetConnectionString("ConStr");
+var ConStr = builder.Configuration.GetConnectionString("SqlConStr");
 
 builder.Services.AddDbContext<Contexto>(options =>
     options.UseMySql(ConStr, new MySqlServerVersion(new Version(8, 0, 30))));

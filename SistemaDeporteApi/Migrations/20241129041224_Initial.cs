@@ -23,7 +23,9 @@ namespace SistemaDeporteApi.Migrations
                     PorcentajeRegular = table.Column<float>(type: "float", nullable: false),
                     PorcentajeBueno = table.Column<float>(type: "float", nullable: false),
                     PorcentajeMuyBueno = table.Column<float>(type: "float", nullable: false),
-                    PorcentajeExcelente = table.Column<float>(type: "float", nullable: false)
+                    PorcentajeExcelente = table.Column<float>(type: "float", nullable: false),
+                    PartidoActual = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -39,6 +41,10 @@ namespace SistemaDeporteApi.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     PartidoId = table.Column<int>(type: "int", nullable: false),
                     Descripcion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Titulo = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Pais = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -107,7 +113,9 @@ namespace SistemaDeporteApi.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Apellido = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Sexo = table.Column<string>(type: "varchar(1)", nullable: false)
+                    Sexo = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Nacionalidad = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -123,6 +131,8 @@ namespace SistemaDeporteApi.Migrations
                     PartidoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Descripcion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Titulo = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
